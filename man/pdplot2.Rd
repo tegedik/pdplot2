@@ -6,12 +6,14 @@
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-`pd_plot` visualizes probability density (mass) functions in R. It requires parameters correctly specified for each distribution.
-
+`pdplot2` visualizes probability density (mass) functions in R. It requires parameters correctly specified for each distribution.
 }
 \usage{
-pd_plot(x, mean, sd, location, scale, size, prob, df, df1, df2, lambda, rate, shape,
-shape1, shape2, type=c("normal", "logistic", "binomial", "chi-square", "poisson", "exponential", "cauchy", "beta", "gamma", "geometric", "Student's t", "F"), lines=FALSE)
+pdplot2(x mean, sd, size, prob, rate, lambda, location, scale, df, df1, df2,
+shape, shape1, shape2, show.color=FALSE, line.selection=FALSE, linetype=NULL,
+color.selection=FALSE, color=NULL, type=c("normal", "binomial", "exponential",
+"poisson", "logistic", "cauchy", "chi-square", "beta", "gamma", "geometric",
+"Student's t", "F")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,7 +31,13 @@ shape1, shape2, type=c("normal", "logistic", "binomial", "chi-square", "poisson"
 \item{lambda}{vector of (non-negative) means.}
 \item{rate}{vector of rates.}
 \item{shape}{shape parameter.}
-\item{shape1, shape2}{non-negative parameters of the Beta distribution.}}
+\item{shape1, shape2}{non-negative parameters of the Beta distribution.}
+\item{show.color}{If TRUE, pdplot2 uses colors for different distributions. Default is FALSE.}
+\item{color.selection}{If show.color=TRUE and color.selection=TRUE, users can supply a character vector of colors. Default is FALSE.}
+\item{line.selection}{If show.color=FALSE (default) and line.selection=TRUE, users can supply a character vector of linetypes. Default is FALSE.}
+\item{color}{A character vector of colors}
+\teim{line.type}{A character vector of linetypes}
+}
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
 %}
@@ -41,14 +49,18 @@ shape1, shape2, type=c("normal", "logistic", "binomial", "chi-square", "poisson"
 %% ...
 %}
 \references{
+H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York,
+  2016.
+
 R Core Team (2020). R: A language and environment for statistical computing. R Foundation
   for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.}
+
 \author{Tahir Enes Gedik
 %%  ~~who you are~~
 }
 \note{
 %%  ~~further notes~~
-This function uses only the probability density functions in base R (stats package). It does not require any external dependency.
+This function uses only the probability density/mass functions in base R (stats package). It also requires {ggplot2} package.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -59,10 +71,10 @@ This function uses only the probability density functions in base R (stats packa
 \examples{
 
 # Plotting normal density function
-pd_plot(seq(-5,5,length=500), mean=1, sd=1, type="normal")
+pdplot2(seq(-5,5,0.01), mean=1, sd=1, type="normal")
 
-# Executing the function with 'lines=TRUE' overlays a new density curve
-pd_plot(seq(-5,5,length=500), mean=2, sd=1, type="normal", lines=TRUE)
+# Plotting several normal density functions
+pdplot2(seq(-6,6,0.01), mean=c(0,0), sd=c(1,2), type="normal")
 
 
 
