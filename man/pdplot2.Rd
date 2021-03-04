@@ -1,5 +1,5 @@
-\name{pd_plot}
-\alias{pd_plot}
+\name{pdplot2}
+\alias{pdplot2}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Plotting Probability Density/Mass Functions
 %%  ~~function to do ... ~~
