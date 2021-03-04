@@ -1141,31 +1141,3 @@ else if (type == "F"){
   }
 
 } #end
-
-
-# Examples
-pdplot2(seq(0,5,0.1), rate=c(0.5,1,2), type="exponential", show.color = TRUE, color.selection = TRUE, color=c("blue", "red", "green"))
-
-pdplot2(seq(0,5,0.1), rate=c(0.5,1,2), type="exponential")
-
-pdplot2(0:20, lambda = c(1,4), type="poisson", show.color = TRUE)
-
-pdplot2(seq(-5,20, 0.1), location = c(5,9), scale=c(2,3), type="logistic", line.selection = TRUE, linetype = c("dotted", "dashed"))
-
-pdplot2(seq(-4,4,0.1), location=c(0,0), scale=c(1,2),type = "cauchy", line.selection = TRUE, linetype = c("dashed", "dotted"))
-
-pdplot2(0:20, lambda = seq(6,10), type = "poisson", line.selection = TRUE, linetype = c("solid", "dashed", "dashed", "dashed", "dashed")) + geom_point(size=3)
-
-pdplot2(seq(0,1,0.01), shape1 = c(2,2), shape2 =c(2,5), type="beta", show.color = TRUE, color.selection = TRUE, color=c("blue", "green"))
-
-pdplot2(seq(0,20,0.01), shape=c(5,7.5), scale=c(1,1), type="gamma", show.color=TRUE, color.selection = TRUE, color=c("blue", "green"))
-
-pdplot2(0:10, prob = c(0.2,0.5,0.8), type="geometric", show.color = TRUE, color.selection = FALSE, color=c("blue", "black", "green")) + geom_point(size=3)
-
-pdplot2(seq(-4, 4, 0.01), df=c(1,5), type="Student's t", show.color = TRUE, color.selection = TRUE, color=c("black", "green"))
-
-
-pdplot2(seq(-4, 4, 0.01), df=c(1,5), type="Student's t")
-pdplot2(seq(0,5, 0.01), df1=c(2,5), df2=c(1,2), type="F", show.color = TRUE, color.selection = TRUE, color=c("black", "blue"))
-
-pdplot2(seq(-6,6,0.01), mean=c(0,0), sd=c(1,1.5), type="normal", show.color = TRUE)
