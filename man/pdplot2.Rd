@@ -35,8 +35,8 @@ color.selection=FALSE, color=NULL, type=c("normal", "binomial", "exponential",
 \item{show.color}{If TRUE, pdplot2 uses colors for different distributions. Default is FALSE.}
 \item{color.selection}{If show.color=TRUE and color.selection=TRUE, users can supply a character vector of colors. Default is FALSE.}
 \item{line.selection}{If show.color=FALSE (default) and line.selection=TRUE, users can supply a character vector of linetypes. Default is FALSE.}
-\item{color}{A character vector of colors}
-\item{line.type}{A character vector of linetypes}
+\item{color}{A character vector of colors.}
+\item{linetype}{A character vector of linetypes.}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
