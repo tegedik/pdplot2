@@ -41,7 +41,7 @@ You might want to change the default linetypes. After setting `line.selection=TR
 
 ``` r
 pdplot2(0:20, lambda=6:9, type="poisson", line.selection=TRUE, 
-        linetype=c("solid", "dashed", "dashed", "dashe"))
+        linetype=c("solid", "dashed", "dashed", "dashed"))
 ```
 ![](man/figures/p4.png)
 
