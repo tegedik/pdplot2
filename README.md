@@ -45,7 +45,7 @@ pdplot2(0:20, lambda=6:9, type="poisson", line.selection=TRUE,
 ```
 ![](man/figures/p4.png)
 
-## Showing and Changing Colors
+## Changing Colors
 
 You might also prefer colored plots. To show colors instead of linetypes, you need to specify `show.color=TRUE`.
 
