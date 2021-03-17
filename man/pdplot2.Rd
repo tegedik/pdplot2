@@ -13,7 +13,7 @@ pdplot2(x mean, sd, size, prob, rate, lambda, location, scale, df, df1, df2,
 shape, shape1, shape2, show.color=FALSE, line.selection=FALSE, linetype=NULL,
 color.selection=FALSE, color=NULL, type=c("normal", "binomial", "exponential",
 "poisson", "logistic", "cauchy", "chi-square", "beta", "gamma", "geometric",
-"Student's t", "F")
+"Student's t", "F"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -51,6 +51,9 @@ color.selection=FALSE, color=NULL, type=c("normal", "binomial", "exponential",
 \references{
 H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York,
   2016.
+
+Karthik Ram and Hadley Wickham (2018). wesanderson: A Wes Anderson Palette Generator. R
+  package version 0.3.6. https://CRAN.R-project.org/package=wesanderson
 
 R Core Team (2020). R: A language and environment for statistical computing. R Foundation
   for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.}

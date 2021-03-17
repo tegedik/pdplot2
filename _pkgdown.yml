@@ -1,0 +1,12 @@
+template:
+  params:
+    bootswatch: sandstone
+
+navbar:
+  components:
+    twitter:
+      icon: "fab fa-twitter fa-lg"
+      href: https://twitter.com/tahirenesgedik
+
+  structure:
+    right: [github, twitter]

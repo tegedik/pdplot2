@@ -1,6 +1,6 @@
 # pdplot2 <img src="man/figures/logo.png" align="right" width="100" />
 
-This package contains a simple wrapper function, `pdplot2` which visualizes probability density/mass functions provided in the base `R` using {ggplot2}. The available probability density/mass functions include the following: `normal`, `logistic`, `binomial`, `chi-square`, `poisson`, `exponential`, `cauchy`, `beta`, `gamma`, `geometric`, `Student's t` and `F`.
+This package contains a simple wrapper function, `pdplot2` which visualizes probability density/mass functions provided in the base `R` using [ggplot2](https://ggplot2.tidyverse.org). The available probability density/mass functions include the following: `normal`, `logistic`, `binomial`, `chi-square`, `poisson`, `exponential`, `cauchy`, `beta`, `gamma`, `geometric`, `Student's t` and `F`.
 
 ## Installation
 
@@ -67,11 +67,8 @@ pdplot2(seq(-5, 5, 0.01), mean=c(0,0,0), sd=c(1,1.5,2), type="normal",
 
 ## References
 
-Guangchuang Yu (2020). hexSticker: Create Hexagon Sticker in R. R package version
-  0.4.9. https://CRAN.R-project.org/package=hexSticker
-
-H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York,
-  2016.
+Guangchuang Yu (2020). hexSticker: Create Hexagon Sticker in R. R package version 0.4.9. https://CRAN.R-project.org/package=hexSticker
   
-Karthik Ram and Hadley Wickham (2018). wesanderson: A Wes Anderson Palette Generator. R
-  package version 0.3.6. https://CRAN.R-project.org/package=wesanderson  
+H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+  
+Karthik Ram and Hadley Wickham (2018). wesanderson: A Wes Anderson Palette Generator. R package version 0.3.6. https://CRAN.R-project.org/package=wesanderson

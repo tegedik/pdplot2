@@ -1,6 +1,7 @@
 Package: pdplot2
 Type: Package
 Title: Plotting Probability Density/Mass Functions
+URL: https://github.com/tegedik/pdplot2
 Version: 0.0.1
 Author: Tahir Enes Gedik
 Maintainer: Tahir Enes Gedik <tegedik@gmail.com>
