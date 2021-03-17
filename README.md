@@ -55,7 +55,7 @@ pdplot2(seq(-5, 5, 0.01), mean=c(0,0,0), sd=c(1,1.5,2), type="normal", show.colo
 
 ![](man/figures/p5.png)
 
-As in the case of linetypes, you can change colors. In addition to `show.color=TRUE`, you need to set `color.selection=TRUE`, and then pass a character vector to `color` option.
+As in the case of linetypes, you can change colors. In addition to `show.color=TRUE`, you need to set `color.selection=TRUE`, and then pass a character vector to `color`.
 
 ``` r
 pdplot2(seq(-5, 5, 0.01), mean=c(0,0,0), sd=c(1,1.5,2), type="normal", 
