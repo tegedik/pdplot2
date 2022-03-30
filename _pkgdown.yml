@@ -1,8 +1,15 @@
 template:
-  params:
+   params:
     bootswatch: sandstone
 
+
 navbar:
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: "Reference"
+      href: reference/index.html
+
   components:
     twitter:
       icon: "fab fa-twitter fa-lg"

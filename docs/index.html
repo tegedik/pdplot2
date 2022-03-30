@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Plotting Probability Density/Mass Functions">
-<meta property="og:description" content="This package provides `pdplot2` function which visualizes probability density/mass functions in base `R`.">
+<meta property="og:description" content="This package provides `pdplot2` function which visualizes probability density/mass functions and Cumulative Distribution functions in base `R`.">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pdplot2</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
       </span>
     </div>
 
@@ -46,7 +48,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -56,13 +58,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/tegedik/pdplot2/">
+  <a href="https://github.com/tegedik/pdplot2/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/tahirenesgedik">
+  <a href="https://twitter.com/tahirenesgedik" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
@@ -79,99 +81,119 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="pdplot2-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#pdplot2-" class="anchor"></a>pdplot2 <img src="reference/figures/logo.png" align="right" width="100">
+<div class="section level1">
+<div class="page-header"><h1 id="pdplot2-">pdplot2 <img src="reference/figures/logo.png" align="right" width="100"><a class="anchor" aria-label="anchor" href="#pdplot2-"></a>
 </h1></div>
-<p>This package contains a simple wrapper function, <code>pdplot2</code> which visualizes probability density/mass functions provided in the base <code>R</code> using <a href="https://ggplot2.tidyverse.org">ggplot2</a>. The available probability density/mass functions include the following: <code>normal</code>, <code>logistic</code>, <code>binomial</code>, <code>chi-square</code>, <code>poisson</code>, <code>exponential</code>, <code>cauchy</code>, <code>beta</code>, <code>gamma</code>, <code>geometric</code>, <code>Student's t</code> and <code>F</code>.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p>This package contains a simple wrapper function, <code>pdplot2</code> which visualizes probability density/mass and cumulative distribution functions provided in the base <code>R</code> using <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a>. The available PDFs &amp; CDFs include the following: <code>normal</code>, <code>logistic</code>, <code>binomial</code>, <code>chi-square</code>, <code>poisson</code>, <code>exponential</code>, <code>cauchy</code>, <code>beta</code>, <code>gamma</code>, <code>geometric</code>, <code>Student's t</code>, <code>F</code>, <code>Weibull</code>, <code>negative binomial</code>, <code>log-normal</code>, <code>uniform</code>, and <code>hypergeometric</code>.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">devtools</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"tegedik/pdplot2"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="va">devtools</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"tegedik/pdplot2"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p><code>pdplot2</code> follows the convention of density distributions in <code>R</code>. First you need to create a vector of quantiles and pass it as the first argument in the function. Then, you need to select the correct parameter(s) for each distribution. Finally, you need to enter the <code>type</code> of the distribution. Here is an example with normal distribution,</p>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<p><code>pdplot2</code> follows the convention of density distributions in <code>R</code>. First, you need to create a vector of quantiles and pass it as the first argument in the function. Then, you need to select the correct parameter(s) for each distribution (e.g., <code>mean</code>, <code>sd</code>). Afterwards, you need to specify the probability distribution (e.g., <code>dist="normal"</code>). Finally, you choose between probability density or cumulative distribution functions (e.g., <code>type="PDF"</code>). Here is an example with normal distribution,</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fl">0</span>, sd<span class="op">=</span><span class="fl">1</span>, type<span class="op">=</span><span class="st">"normal"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fl">0</span>, sd<span class="op">=</span><span class="fl">1</span>, dist<span class="op">=</span><span class="st">"normal"</span>, type<span class="op">=</span><span class="st">"PDF"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/p1.png"></p>
 <p>This will create a normal probability distribution with <code>mean</code> 0 and <code>sd</code> 1. You can pass vector of parameter values as argument to plot multiple density curves.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"normal"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, dist<span class="op">=</span><span class="st">"normal"</span>, type<span class="op">=</span><span class="st">"PDF"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/p2.png"></p>
-<p>Here is an example with binomial distribution,</p>
+<p>If you use <code>type="CDF"</code>, the function will return a cumulative distribution function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">25</span>, size<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">30</span><span class="op">)</span>, prob<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.4</span>, <span class="fl">0.5</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, dist<span class="op">=</span><span class="st">"normal"</span>, type<span class="op">=</span><span class="st">"CDF"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/p3.png"></p>
 </div>
-<div id="changing-linetypes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#changing-linetypes" class="anchor"></a>Changing Linetypes</h2>
-<p>You might want to change the default linetypes. After setting <code>line.selection=TRUE</code>, you can pass a character vector to <code>linetype</code> to change them.</p>
+<div class="section level2">
+<h2 id="changing-linetypes">Changing Linetypes<a class="anchor" aria-label="anchor" href="#changing-linetypes"></a>
+</h2>
+<p>You might want to change the default line types. To accomplish this, you can pass a character vector containing types to <code>linetype</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">20</span>, lambda<span class="op">=</span><span class="fl">6</span><span class="op">:</span><span class="fl">9</span>, type<span class="op">=</span><span class="st">"poisson"</span>, line.selection<span class="op">=</span><span class="cn">TRUE</span>, 
-        linetype<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dashed"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">20</span>, lambda<span class="op">=</span><span class="fl">6</span><span class="op">:</span><span class="fl">9</span>, dist<span class="op">=</span><span class="st">"poisson"</span>, type<span class="op">=</span><span class="st">"PDF"</span>,
+        linetype<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dashed"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/p4.png"></p>
 </div>
-<div id="changing-colors" class="section level2">
-<h2 class="hasAnchor">
-<a href="#changing-colors" class="anchor"></a>Changing Colors</h2>
-<p>You might also prefer colored plots. To show colors instead of linetypes, you need to specify <code>show.color=TRUE</code>.</p>
+<div class="section level2">
+<h2 id="colors">Colors<a class="anchor" aria-label="anchor" href="#colors"></a>
+</h2>
+<p>You might also prefer colored plots. To show colors instead of linetypes, you need to specify <code>show_color=TRUE</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1.5</span>,<span class="fl">2</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"normal"</span>, show.color<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1.5</span>,<span class="fl">2</span><span class="op">)</span>, dist<span class="op">=</span><span class="st">"normal"</span>, type<span class="op">=</span><span class="st">"PDF"</span>, show_color<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/p5.png"></p>
-<p>As in the case of linetypes, you can change colors. In addition to <code>show.color=TRUE</code>, you need to set <code>color.selection=TRUE</code>, and then pass a character vector to <code>color</code>.</p>
+<p>As in the case of line types, you can change colors. You need to set <code>color_selection=TRUE</code> and then pass a character vector to <code>color</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1.5</span>,<span class="fl">2</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"normal"</span>, 
-        show.color<span class="op">=</span><span class="cn">TRUE</span>, color.selection<span class="op">=</span><span class="cn">TRUE</span>, color<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0.01</span><span class="op">)</span>, mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1.5</span>,<span class="fl">2</span><span class="op">)</span>, dist<span class="op">=</span><span class="st">"normal"</span>, type<span class="op">=</span><span class="st">"PDF"</span>,
+              show_color<span class="op">=</span><span class="cn">TRUE</span>, color<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/p6.png"></p>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
-<p>Guangchuang Yu (2020). hexSticker: Create Hexagon Sticker in R. R package version 0.4.9. <a href="https://CRAN.R-project.org/package=hexSticker" class="uri">https://CRAN.R-project.org/package=hexSticker</a></p>
+<div class="section level2">
+<h2 id="editing-plots">Editing Plots<a class="anchor" aria-label="anchor" href="#editing-plots"></a>
+</h2>
+<p>Since <code>pdplot2</code> runs <code>ggplot2</code> and creates <code>ggplot2</code> objects, you can edit plots using <code>ggplot2</code> functions. For example, after plotting discrete distributions, you might want to add points (see this <a href="https://en.wikipedia.org/wiki/Poisson_distribution" class="external-link">wiki page</a> for Poisson distribution).</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/pdplot2.html">pdplot2</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">20</span>, lambda<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">10</span><span class="op">)</span>, dist<span class="op">=</span><span class="st">"poisson"</span>, type<span class="op">=</span><span class="st">"PDF"</span>, show_color<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/p7.png"></p>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<p>Guangchuang Yu (2020). hexSticker: Create Hexagon Sticker in R. R package version 0.4.9. <a href="https://CRAN.R-project.org/package=hexSticker" class="external-link uri">https://CRAN.R-project.org/package=hexSticker</a></p>
 <p>H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.</p>
-<p>Karthik Ram and Hadley Wickham (2018). wesanderson: A Wes Anderson Palette Generator. R package version 0.3.6. <a href="https://CRAN.R-project.org/package=wesanderson" class="uri">https://CRAN.R-project.org/package=wesanderson</a></p>
+<p>Karthik Ram and Hadley Wickham (2018). wesanderson: A Wes Anderson Palette Generator. R package version 0.3.6. <a href="https://CRAN.R-project.org/package=wesanderson" class="external-link uri">https://CRAN.R-project.org/package=wesanderson</a></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/tegedik/pdplot2/">https://​github.com/​tegedik/​pdplot2/​</a>
-</li>
+<li><a href="https://github.com/tegedik/pdplot2/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing pdplot2</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Tahir Enes Gedik <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Tahir Enes Gedik.</p>
+  <p></p>
+<p>Developed by Tahir Enes Gedik.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -179,6 +201,8 @@
 
   
 
+
+  
 
   </body>
 </html>
