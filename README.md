@@ -1,6 +1,6 @@
 # pdplot2 <img src="man/figures/logo.png" align="right" width="100" />
 
-This package contains a simple wrapper function, `pdplot2` which visualizes probability density/mass and cumulative distribution functions provided in the base `R` using [ggplot2](https://ggplot2.tidyverse.org). The available PDFs & CDFs include the following: `normal`, `logistic`, `binomial`, `chi-square`, `poisson`, `exponential`, `cauchy`, `beta`, `gamma`, `geometric`, `Student's t`, `F`, `Weibull`, `negative binomial`, `log-normal`, `uniform`, and `hypergeometric`.
+This package contains a simple wrapper function, `pdplot2` which visualizes probability density/mass and cumulative distribution functions provided in `R` using [ggplot2](https://ggplot2.tidyverse.org). The available PDFs & CDFs include the following: `normal`, `logistic`, `binomial`, `chi-square`, `poisson`, `exponential`, `cauchy`, `beta`, `gamma`, `geometric`, `Student's t`, `F`, `Weibull`, `negative binomial`, `log-normal`, `uniform`, and `hypergeometric`.
 
 ## Installation
 
