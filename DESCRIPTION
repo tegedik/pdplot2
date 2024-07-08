@@ -2,7 +2,7 @@ Package: pdplot2
 Type: Package
 Title: Plotting Probability Density/Mass and Cumulative Distribution Functions
 URL: https://github.com/tegedik/pdplot2
-Version: 0.0.2
+Version: 0.0.3
 Author: Tahir Enes Gedik
 Maintainer: Tahir Enes Gedik <tegedik@gmail.com>
 Description: This package provides `pdplot2` function which visualizes probability density/mass and cumulative distribution functions in base `R`.
