@@ -33,8 +33,6 @@ pdplot2 <- function(x = seq(...),
                       "#FF0000", "#00A08A", "#F2AD00", "#F98400", "#5BBCD6",
                       "#ECCBAE", "#046C9A", "#D69C4E", "#ABDDDE", "#000000")) {
 
-  library(ggplot2)
-
   dist_funcs <- list(
     "normal" = list("PDF" = "dnorm", "CDF" = "pnorm", "params" = c("mean", "sd"), "title" = "Normal Distribution", "legend" = expression(paste(mu, ", ", sigma))),
     "binomial" = list("PDF" = "dbinom", "CDF" = "pbinom", "params" = c("size", "prob"), "title" = "Binomial Distribution", "legend" = expression(paste(n, ", ", p))),
