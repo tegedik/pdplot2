@@ -92,7 +92,8 @@ pdplot2 <- function(x = seq(...),
     scale_linetype_manual(values = linetype, labels = labels) +
     labs(
       title = title,
-      y = if (type == "PDF") "Probability Density" else expression(paste("Probability ") (X <= x)),
+      #y = if (type == "PDF") "Probability Density" else expression(paste("Probability ") (X <= x)),
+      y = " ",
       x = " ",
       linetype = legend_title
     ) +
